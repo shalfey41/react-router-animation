@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import './style.css';
 
 const Logo = ({ className = '' }) => {
-  return <a href="#" className={`Logo ${className}`}>Mimini</a>;
+  return <Link to="/" className={`Logo ${className}`}>Mimini</Link>;
 };
 
 export default Logo;
