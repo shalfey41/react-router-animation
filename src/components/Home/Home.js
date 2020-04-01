@@ -1,13 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap } from 'gsap';
 
 import './style.css';
+import withRouteReady from "../App/withRouteReady";
 
-const Home = () => {
+const Home = ({ onReadyNewRoute }) => {
+  const [isLoading, setLoader] = useState(true);
   useEffect(() => {
-    gsap.from('.Home__title', { y: -40, opacity: 0, duration: 1 });
-    gsap.from('.Home__text', { y: -40, opacity: 0, duration: 1 });
-  }, []);
+    if (!isLoading) {
+      gsap.from('.Home__title', { y: -40, opacity: 0, duration: 1 });
+      gsap.from('.Home__text', { y: -40, opacity: 0, duration: 1 });
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    // Имитация загрузки с сервера
+    setTimeout(() => {
+      setLoader(false);
+      onReadyNewRoute();
+    }, 2000);
+  }, [onReadyNewRoute]);
 
   return (
     <section className="Home">
@@ -17,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withRouteReady(Home, true);
