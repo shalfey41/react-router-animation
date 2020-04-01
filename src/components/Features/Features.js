@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import './style.css';
 import image1 from './assets/1.jpeg';
@@ -6,12 +6,21 @@ import image2 from './assets/2.svg';
 import image3 from './assets/3.jpeg';
 import image4 from './assets/4.webp';
 import image5 from './assets/5.jpg';
+import Modal from "../Modal/Modal";
+import withRouteReady from "../App/withRouteReady";
 
 const Features = () => {
+  const [canShowModal, setModal] = useState(false);
+  const showModal = () => setModal(true);
+  const closeModal = () => setModal(false);
+
   return (
     <section className="Features">
       <h1 className="Features__title">A Fitting Design</h1>
       <p className="Features__text">If you want to spend hours with your Mimini VR, you can: the Mimini VR is engineered with your comfort in mind and is designed to feel comfortable when you’re wearing it.</p>
+      <button onClick={showModal} className="Features__button">Нажми меня</button>
+
+      {canShowModal && <Modal onClose={closeModal} />}
 
       <div className="Features__imageGrid">
         <div className="Features__imageMain">
@@ -32,4 +41,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default withRouteReady(Features);

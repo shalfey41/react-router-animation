@@ -1,5 +1,6 @@
 .Features {
     padding-top: 130px;
+    text-align: center;
 }
 
 .Features__title,
@@ -81,4 +82,14 @@
 .Features__image3,
 .Features__image4 {
     margin-bottom: 35px;
+}
+
+.Features__button {
+    margin: 20px 0 30px;
+    padding: 10px 12px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
 }
